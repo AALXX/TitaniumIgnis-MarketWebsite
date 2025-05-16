@@ -1,3 +1,7 @@
+'use client'
+
+import type React from 'react'
+
 import Link from 'next/link'
 import { ArrowRight, CheckCircle, Clock, Code, Users, Rocket } from 'lucide-react'
 import Image from 'next/image'
@@ -5,29 +9,32 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { MobileNav } from '@/components/MobileNav'
 
+// Scroll function for navigation
+const scrollToSection = (id: string, e?: React.MouseEvent) => {
+    if (e) e.preventDefault()
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
+
 export default function Home() {
     return (
         <div className="flex  flex-col bg-zinc-950 text-zinc-100  w-full ">
             <header className="flex sticky top-0 z-40 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
                 <div className=" flex h-16 items-center justify-center w-full">
-                    <div className="flex items-center gap-2 mr-auto ml-4">
+                    <Link href="#home" className="flex items-center gap-2 mr-auto ml-4" onClick={e => scrollToSection('home', e)}>
                         <div className="rounded-md bg-zinc-800 p-1">
                             <Rocket className="h-6 w-6 text-zinc-100" />
                         </div>
                         <span className="text-xl font-bold">ProjectFlow</span>
-                    </div>
+                    </Link>
 
                     <nav className="hidden md:flex items-center justify-center gap-6">
-                        <Link href="#features" className="text-sm font-medium text-zinc-400 hover:text-zinc-100">
+                        <Link href="#features" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => scrollToSection('features', e)}>
                             Features
                         </Link>
-                        <Link href="#how-it-works" className="text-sm font-medium text-zinc-400 hover:text-zinc-100">
+                        <Link href="#how-it-works" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => scrollToSection('how-it-works', e)}>
                             How It Works
                         </Link>
-                        <Link href="#testimonials" className="text-sm font-medium text-zinc-400 hover:text-zinc-100">
-                            Testimonials
-                        </Link>
-                        <Link href="#pricing" className="text-sm font-medium text-zinc-400 hover:text-zinc-100">
+                        <Link href="#pricing" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => scrollToSection('pricing', e)}>
                             Pricing
                         </Link>
                     </nav>
@@ -42,14 +49,14 @@ export default function Home() {
                 </div>
             </header>
 
-            <section className=" p-4 md:p-32   w-full self-center">
-                <div className="grid gap-8 md:grid-cols-2 md:gap-12 border-cyan-300">
-                    <div className="flex flex-col justify-center space-y-4 border-cyan-300">
+            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="home">
+                <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+                    <div className="flex flex-col justify-center space-y-4">
                         <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">Streamline Your Projects</div>
-                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
                             Project Management <span className="text-zinc-400">Simplified</span>
                         </h1>
-                        <p className="max-w-[600px] text-zinc-400 md:text-xl">
+                        <p className="max-w-[600px] text-zinc-400 text-base md:text-lg lg:text-xl">
                             Effortlessly launch, track, and deploy projects with our all-in-one platform. Designed for modern teams who value efficiency and collaboration.
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">
@@ -59,20 +66,20 @@ export default function Home() {
                             </Button>
                         </div>
                     </div>
-                    <div className="relative flex items-center justify-center">
-                        <div className="relative h-[400px] w-full overflow-hidden rounded-xl border-red-500 border">
-                            {/* <Image src="" alt="ProjectFlow Dashboard" fill className="object-cover" priority /> */}
+                    <div className="relative flex items-center justify-center mt-8 md:mt-0">
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border-red-500 border">
+                            {/* <Image src="/placeholder.svg" alt="ProjectFlow Dashboard" fill className="object-cover" priority /> */}
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className=" p-4 md:p-32   w-full self-center">
+            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="features">
                 <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Powerful Features</h2>
                     <p className="max-w-[85%] text-zinc-400 md:text-xl">Everything you need to manage projects from start to finish</p>
                 </div>
-                <div className="mx-auto grid gap-8 md:grid-cols-3 md:gap-12 lg:max-w-none lg:grid-cols-3 mt-16">
+                <div className="mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:gap-12 mt-12 sm:mt-16">
                     <div className="flex flex-col items-start gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-6">
                         <div className="rounded-full bg-zinc-800 p-2">
                             <Rocket className="h-6 w-6" />
@@ -118,7 +125,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className=" p-4 md:p-32   w-full self-center">
+            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="how-it-works">
                 <div className="grid gap-8 md:grid-cols-2 md:gap-12">
                     <div className="flex flex-col justify-center space-y-4">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Comprehensive Dashboard</h2>
@@ -148,17 +155,17 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="relative flex items-center justify-center">
-                        <div className="relative h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
                             <Image src="/Dashboard.png" alt="Deployment Monitoring" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className=" p-4 md:p-32   w-full self-center">
+            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
                 <div className="grid gap-8 md:grid-cols-2 md:gap-12">
                     <div className="order-2 md:order-1 relative flex items-center justify-center">
-                        <div className="relative h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
                             <Image src="/TeamManagement.png" alt="Team Management" fill className="object-cover" />
                         </div>
                     </div>
@@ -192,7 +199,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className=" p-4 md:p-32   w-full self-center">
+            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
                 <div className="grid gap-8 md:grid-cols-2 md:gap-12">
                     <div className="flex flex-col justify-center space-y-4">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Seamless Deployment</h2>
@@ -222,19 +229,19 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="relative flex items-center justify-center">
-                        <div className="relative h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
                             <Image src="/Monitoring.png" alt="Code Editor and Deployment" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className=" p-4 md:p-32   w-full self-center">
+            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="pricing">
                 <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Simple, Transparent Pricing</h2>
                     <p className="max-w-[85%] text-zinc-400 md:text-xl">Choose the plan that's right for your team</p>
                 </div>
-                <div className="mx-auto grid gap-8 md:grid-cols-3 md:gap-12 lg:max-w-none lg:grid-cols-3 mt-16">
+                <div className="mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3 md:gap-8 lg:gap-12 mt-12 sm:mt-16">
                     <div className="flex flex-col rounded-lg border border-zinc-800 bg-zinc-900 p-6">
                         <div className="mb-4">
                             <h3 className="text-xl font-bold">Starter</h3>
@@ -350,7 +357,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className=" p-4 md:p-32   w-full self-center">
+            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
                 <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to streamline your projects?</h2>
                     <p className="max-w-[85%] text-zinc-400 md:text-xl">Join thousands of teams already using ProjectFlow to manage their projects more efficiently.</p>
@@ -364,8 +371,8 @@ export default function Home() {
             </section>
 
             <footer className="border-t border-zinc-800 bg-zinc-950 w-full">
-                <div className=" p-4 md:p-32   w-full self-center">
-                    <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
+                <div className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
                         <div className="col-span-2 lg:col-span-2">
                             <div className="flex items-center gap-2">
                                 <div className="rounded-md bg-zinc-800 p-1">
@@ -451,7 +458,7 @@ export default function Home() {
                             </ul>
                         </div>
                     </div>
-                    <div className="mt-12 border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <div className="mt-12 border-t border-zinc-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
                         <p className="text-sm text-zinc-400">© 2025 ProjectFlow. All rights reserved.</p>
                         <div className="flex gap-4 mt-4 md:mt-0">
                             <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-100">
