@@ -7,7 +7,6 @@ import { ArrowRight, CheckCircle, Clock, Code, Users, Rocket } from 'lucide-reac
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
-import { MobileNav } from '@/components/MobileNav'
 
 // Scroll function for navigation
 const scrollToSection = (id: string, e?: React.MouseEvent) => {
@@ -24,7 +23,7 @@ export default function Home() {
                         <div className="rounded-md bg-zinc-800 p-1">
                             <Rocket className="h-6 w-6 text-zinc-100" />
                         </div>
-                        <span className="text-xl font-bold">ProjectFlow</span>
+                        <span className="text-xl font-bold">Titanium Ignis</span>
                     </Link>
 
                     <nav className="hidden md:flex items-center justify-center gap-6">
@@ -39,12 +38,8 @@ export default function Home() {
                         </Link>
                     </nav>
 
-                    <div className="hidden md:flex items-center gap-4 ml-auto mr-4">
+                    <div className=" md:flex items-center gap-4 ml-auto mr-4">
                         <Button className="px-5 py-2 ">Get Started</Button>
-                    </div>
-
-                    <div className="md:hidden">
-                        <MobileNav />
                     </div>
                 </div>
             </header>
@@ -68,7 +63,7 @@ export default function Home() {
                     </div>
                     <div className="relative flex items-center justify-center mt-8 md:mt-0">
                         <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border-red-500 border">
-                            {/* <Image src="/placeholder.svg" alt="ProjectFlow Dashboard" fill className="object-cover" priority /> */}
+                            {/* <Image src="/placeholder.svg" alt="Titanium Ignis Dashboard" fill className="object-cover" priority /> */}
                         </div>
                     </div>
                 </div>
@@ -154,9 +149,9 @@ export default function Home() {
                             </Button>
                         </div>
                     </div>
-                    <div className="relative flex items-center justify-center">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
-                            <Image src="/Dashboard.png" alt="Deployment Monitoring" fill className="object-cover" />
+                    <div className="relative flex items-center justify-center ">
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl border border-zinc-800">
+                            <Image src="/Dashboard.png" alt="Deployment Monitoring" fill className="object-contain" />
                         </div>
                     </div>
                 </div>
@@ -164,9 +159,9 @@ export default function Home() {
 
             <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
                 <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-                    <div className="order-2 md:order-1 relative flex items-center justify-center">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
-                            <Image src="/TeamManagement.png" alt="Team Management" fill className="object-cover" />
+                    <div className="order-2 md:order-1 relative flex items-center justify-center ">
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl border border-zinc-800">
+                            <Image src="/TeamManagement.png" alt="Team Management" fill className="object-contain" />
                         </div>
                     </div>
                     <div className="order-1 md:order-2 flex flex-col justify-center space-y-4">
@@ -228,9 +223,9 @@ export default function Home() {
                             </Button>
                         </div>
                     </div>
-                    <div className="relative flex items-center justify-center">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border border-zinc-800">
-                            <Image src="/Monitoring.png" alt="Code Editor and Deployment" fill className="object-cover" />
+                    <div className="relative flex items-center justify-center ">
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl border border-zinc-800">
+                            <Image src="/Monitoring.png" alt="Deployment Monitoring" fill className="object-contain" />
                         </div>
                     </div>
                 </div>
@@ -360,7 +355,7 @@ export default function Home() {
             <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
                 <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to streamline your projects?</h2>
-                    <p className="max-w-[85%] text-zinc-400 md:text-xl">Join thousands of teams already using ProjectFlow to manage their projects more efficiently.</p>
+                    <p className="max-w-[85%] text-zinc-400 md:text-xl">Join thousands of teams already using Titanium Ignis to manage their projects more efficiently.</p>
                     <div className="flex flex-col gap-3 sm:flex-row mt-6">
                         <Button>Start Free Trial</Button>
                         <Button variant="outline" className="border-zinc-800 text-zinc-100 hover:bg-zinc-800">
@@ -378,7 +373,7 @@ export default function Home() {
                                 <div className="rounded-md bg-zinc-800 p-1">
                                     <Rocket className="h-6 w-6 text-zinc-100" />
                                 </div>
-                                <span className="text-xl font-bold">ProjectFlow</span>
+                                <span className="text-xl font-bold">Titanium Ignis</span>
                             </div>
                             <p className="mt-4 text-zinc-400">Streamline your project management with our all-in-one platform. Launch, track, and deploy projects with ease.</p>
                         </div>
@@ -459,7 +454,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="mt-12 border-t border-zinc-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
-                        <p className="text-sm text-zinc-400">© 2025 ProjectFlow. All rights reserved.</p>
+                        <p className="text-sm text-zinc-400">© 2025 Titanium Ignis. All rights reserved.</p>
                         <div className="flex gap-4 mt-4 md:mt-0">
                             <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-100">
                                 Terms
