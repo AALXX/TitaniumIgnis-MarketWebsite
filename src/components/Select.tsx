@@ -163,7 +163,7 @@ export function Select({
             return (
               <div
                 key={option.value}
-                ref={(el) => (optionRefs.current[currentIndex] = el)}
+                ref={(el: any) => (optionRefs.current[currentIndex] = el) }
                 className={`relative flex cursor-pointer select-none items-center px-3 py-1.5 text-sm outline-none transition-colors ${
                   option.disabled
                     ? "pointer-events-none opacity-50"
@@ -191,7 +191,7 @@ export function Select({
       return (
         <div
           key={option.value}
-          ref={(el) => (optionRefs.current[currentIndex] = el)}
+          ref={(el: any) => (optionRefs.current[currentIndex] = el)}
           className={`relative flex cursor-pointer select-none items-center px-3 py-1.5 text-sm outline-none transition-colors ${
             option.disabled
               ? "pointer-events-none opacity-50"
