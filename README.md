@@ -24,4 +24,5 @@ This website is a simple, static site intended to:
 Want to learn more or schedule a demo?
 
 - Visit our main platform: SOON
-- Contact us: SOON  
+- Contact us: titaniumignis@gmail.com  
+z

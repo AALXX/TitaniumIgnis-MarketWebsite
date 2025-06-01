@@ -7,42 +7,15 @@ import { ArrowRight, CheckCircle, Clock, Code, Users, Rocket } from 'lucide-reac
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
-
-// Scroll function for navigation
-const scrollToSection = (id: string, e?: React.MouseEvent) => {
-    if (e) e.preventDefault()
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-}
+import { useRouter } from 'next/navigation'
+import Navbar from '@/features/navbar/Navbar'
 
 export default function Home() {
+    const router = useRouter()
+
     return (
         <div className="flex  flex-col bg-zinc-950 text-zinc-100  w-full ">
-            <header className="flex sticky top-0 z-40 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
-                <div className=" flex h-16 items-center justify-center w-full">
-                    <Link href="#home" className="flex items-center gap-2 mr-auto ml-4" onClick={e => scrollToSection('home', e)}>
-                        <div className="rounded-md bg-zinc-800 p-1">
-                            <Rocket className="h-6 w-6 text-zinc-100" />
-                        </div>
-                        <span className="text-xl font-bold">Titanium Ignis</span>
-                    </Link>
-
-                    <nav className="hidden md:flex items-center justify-center gap-6">
-                        <Link href="#features" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => scrollToSection('features', e)}>
-                            Features
-                        </Link>
-                        <Link href="#how-it-works" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => scrollToSection('how-it-works', e)}>
-                            How It Works
-                        </Link>
-                        <Link href="#pricing" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => scrollToSection('pricing', e)}>
-                            Pricing
-                        </Link>
-                    </nav>
-
-                    <div className=" md:flex items-center gap-4 ml-auto mr-4">
-                        <Button className="px-5 py-2 ">Get Started</Button>
-                    </div>
-                </div>
-            </header>
+            <Navbar />
 
             <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="home">
                 <div className="grid gap-8 md:grid-cols-2 md:gap-12">
@@ -55,15 +28,15 @@ export default function Home() {
                             Effortlessly launch, track, and deploy projects with our all-in-one platform. Designed for modern teams who value efficiency and collaboration.
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">
-                            <Button>Start Free Trial</Button>
-                            <Button variant="outline" className="border-zinc-800 text-zinc-100 hover:bg-zinc-800">
+                            <Button onClick={() => router.push('/platform-contact')}>Start Free Trial</Button>
+                            <Button variant="outline" className="border-zinc-800 text-zinc-100 hover:bg-zinc-800" onClick={() => router.push('/platform-contact')}>
                                 Book a Demo
                             </Button>
                         </div>
                     </div>
                     <div className="relative flex items-center justify-center mt-8 md:mt-0">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full overflow-hidden rounded-xl border-red-500 border">
-                            {/* <Image src="/placeholder.svg" alt="Titanium Ignis Dashboard" fill className="object-cover" priority /> */}
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl ">
+                            <Image src="/UserAccount.png" alt="Deployment Monitoring" fill className="object-contain rounded-xl" />
                         </div>
                     </div>
                 </div>
@@ -150,8 +123,8 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="relative flex items-center justify-center ">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl border border-zinc-800">
-                            <Image src="/Dashboard.png" alt="Deployment Monitoring" fill className="object-contain" />
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl ">
+                            <Image src="/Dashboard.png" alt="Deployment Monitoring" fill className="object-contain rounded-xl" />
                         </div>
                     </div>
                 </div>
@@ -160,8 +133,8 @@ export default function Home() {
             <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
                 <div className="grid gap-8 md:grid-cols-2 md:gap-12">
                     <div className="order-2 md:order-1 relative flex items-center justify-center ">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl border border-zinc-800">
-                            <Image src="/TeamManagement.png" alt="Team Management" fill className="object-contain" />
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl ">
+                            <Image src="/TeamManagement.png" alt="Team Management" fill className="object-contain rounded-xl" />
                         </div>
                     </div>
                     <div className="order-1 md:order-2 flex flex-col justify-center space-y-4">
@@ -224,8 +197,8 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="relative flex items-center justify-center ">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl border border-zinc-800">
-                            <Image src="/Monitoring.png" alt="Deployment Monitoring" fill className="object-contain" />
+                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl">
+                            <Image src="/Monitoring.png" alt="Deployment Monitoring" fill className="object-contain rounded-xl" />
                         </div>
                     </div>
                 </div>
@@ -268,7 +241,9 @@ export default function Home() {
                                 <span>Team collaboration</span>
                             </li>
                         </ul>
-                        <Button className="mt-auto">Get Started</Button>
+                        <Button className="mt-auto" onClick={() => router.push('/platform-contact')}>
+                            Get Started
+                        </Button>
                     </div>
                     <div className="flex flex-col rounded-lg border border-zinc-800 bg-zinc-900 p-6 relative">
                         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-zinc-100 text-zinc-950 px-3 py-1 rounded-full text-sm font-medium">Most Popular</div>
@@ -276,7 +251,7 @@ export default function Home() {
                             <h3 className="text-xl font-bold">Professional</h3>
                             <p className="text-zinc-400 mt-2">For growing teams with more complex needs</p>
                             <div className="mt-4">
-                                <span className="text-4xl font-bold">$125</span>
+                                <span className="text-4xl font-bold">$175</span>
                                 <span className="text-zinc-400">/month</span>
                             </div>
                         </div>
@@ -306,7 +281,9 @@ export default function Home() {
                                 <span>Basic analytics</span>
                             </li>
                         </ul>
-                        <Button className="mt-auto">Get Started</Button>
+                        <Button className="mt-auto" onClick={() => router.push('/platform-contact')}>
+                            Get Started
+                        </Button>
                     </div>
                     <div className="flex flex-col rounded-lg border border-zinc-800 bg-zinc-900 p-6">
                         <div className="mb-4">
@@ -347,7 +324,9 @@ export default function Home() {
                                 <span>Priority support</span>
                             </li>
                         </ul>
-                        <Button className="mt-auto">Contact Sales</Button>
+                        <Button className="mt-auto" onClick={() => router.push('/platform-contact')}>
+                            Contact Sales
+                        </Button>
                     </div>
                 </div>
             </section>
@@ -357,8 +336,8 @@ export default function Home() {
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to streamline your projects?</h2>
                     <p className="max-w-[85%] text-zinc-400 md:text-xl">Join thousands of teams already using Titanium Ignis to manage their projects more efficiently.</p>
                     <div className="flex flex-col gap-3 sm:flex-row mt-6">
-                        <Button>Start Free Trial</Button>
-                        <Button variant="outline" className="border-zinc-800 text-zinc-100 hover:bg-zinc-800">
+                        <Button onClick={() => router.push('/platform-contact')}>Start Free Trial</Button>
+                        <Button variant="outline" className="border-zinc-800 text-zinc-100 hover:bg-zinc-800" onClick={() => router.push('/platform-contact')}>
                             Book a Demo
                         </Button>
                     </div>
@@ -418,11 +397,6 @@ export default function Home() {
                                 <li>
                                     <Link href="#" className="hover:text-zinc-100">
                                         Support
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        API
                                     </Link>
                                 </li>
                             </ul>
