@@ -1,26 +1,33 @@
-'use client'
-
-import type React from 'react'
-import Link from 'next/link'
-import { useRouter, usePathname } from 'next/navigation'
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/Button'
-import Image from 'next/image'
+import Link from 'next/link'
 
-const scrollToSection = (id: string, e?: React.MouseEvent) => {
-    if (e) e.preventDefault()
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+interface NavbarProps {
+    router?: {
+        push: (path: string) => void
+    }
+    pathname?: string
 }
 
-export default function Navbar() {
-    const router = useRouter()
-    const pathname = usePathname()
-    const isHomePage = pathname === '/'
+export const Navbar = ({ router, pathname }: NavbarProps) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const isHomePage = pathname === '/' || !pathname
 
-    const handleNavClick = (id: string, e: React.MouseEvent) => {
-        e.preventDefault()
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+            setIsMenuOpen(false)
+        }
+    }
+
+    const handleNavClick = (id: string, e?: React.MouseEvent) => {
+        if (e) e.preventDefault()
+
         if (isHomePage) {
             scrollToSection(id)
-        } else {
+        } else if (router) {
             router.push('/')
             setTimeout(() => {
                 scrollToSection(id)
@@ -28,41 +35,82 @@ export default function Navbar() {
         }
     }
 
-    const handleLogoClick = (e: React.MouseEvent) => {
-        e.preventDefault()
+    const handleLogoClick = (e?: React.MouseEvent) => {
+        if (e) e.preventDefault()
+
         if (isHomePage) {
             scrollToSection('home')
-        } else {
+        } else if (router) {
             router.push('/')
         }
     }
 
+    const handleGetStarted = () => {
+        if (router) {
+            router.push('/platform-contact')
+        }
+    }
+
     return (
-        <header className="flex sticky top-0 z-40 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
-            <div className=" flex h-16 items-center justify-center w-full">
-                <Link href="#home" className="flex items-center gap-2 mr-auto ml-4" onClick={handleLogoClick}>
-                    <Image src="/fire.png" alt="Titanium Ignis Dashboard" width={60} height={60} className='self-center'/>
+        <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex h-16 items-center justify-between">
+                    <button onClick={handleLogoClick} className="flex items-center gap-2 transition-transform hover:scale-105">
+                        <img src={'/fire.png'} alt="Titanium Ignis" className="h-10 w-10" />
+                        <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Titanium Ignis</span>
+                    </button>
 
-                    <span className="text-xl font-bold">Titanium Ignis</span>
-                </Link>
+                    <nav className="hidden md:flex items-center gap-8">
+                        <button onClick={e => handleNavClick('features', e)} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            Features
+                        </button>
+                        <button onClick={e => handleNavClick('how-it-works', e)} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            How It Works
+                        </button>
+                        <button onClick={e => handleNavClick('pricing', e)} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            Pricing
+                        </button>
+                    </nav>
 
-                <nav className="hidden md:flex items-center justify-center gap-6">
-                    <Link href="#features" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => handleNavClick('features', e)}>
-                        Features
-                    </Link>
-                    <Link href="#how-it-works" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => handleNavClick('how-it-works', e)}>
-                        How It Works
-                    </Link>
-                    <Link href="#pricing" className="text-sm font-medium text-zinc-400 hover:text-zinc-100" onClick={e => handleNavClick('pricing', e)}>
-                        Pricing
-                    </Link>
-                </nav>
+                    <div className="hidden md:flex items-center gap-4">
+                        <Link href="/platform-contact">
+                            <Button variant="outline" size="sm">
+                                Sign In
+                            </Button>
+                        </Link>
+                        <Link href="/platform-contact">
+                            <Button size="sm" variant="default" onClick={handleGetStarted}>
+                                Get Started
+                            </Button>
+                        </Link>
+                    </div>
 
-                <div className=" md:flex items-center gap-4 ml-auto mr-4">
-                    <Button className="px-5 py-2 " onClick={() => router.push('/platform-contact')}>
-                        Get Started
-                    </Button>
+                    <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    </button>
                 </div>
+
+                {isMenuOpen && (
+                    <div className="md:hidden py-4 space-y-4 border-t border-border/50 mt-2 animate-fade-in">
+                        <button onClick={e => handleNavClick('features', e)} className="block w-full text-left px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            Features
+                        </button>
+                        <button onClick={e => handleNavClick('how-it-works', e)} className="block w-full text-left px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            How It Works
+                        </button>
+                        <button onClick={e => handleNavClick('pricing', e)} className="block w-full text-left px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            Pricing
+                        </button>
+                        <div className="px-4 space-y-2">
+                            <Button variant="outline" className="w-full">
+                                Sign In
+                            </Button>
+                            <Button className="w-full" onClick={handleGetStarted}>
+                                Get Started
+                            </Button>
+                        </div>
+                    </div>
+                )}
             </div>
         </header>
     )

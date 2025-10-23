@@ -3,20 +3,15 @@
 import Link from 'next/link'
 import { ArrowLeft, Rocket, Search } from 'lucide-react'
 import { Button } from '@/components/Button'
+import { Navbar } from '@/features/navbar/Navbar'
+import { useRouter, usePathname } from 'next/navigation'
 
 export default function NotFound() {
+    const router = useRouter()
+    const pathname = usePathname()
     return (
         <div className="flex min-h-screen flex-col bg-zinc-950 text-zinc-100 w-full">
-            <header className="flex sticky top-0 z-40 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
-                <div className="flex h-16 items-center justify-center w-full">
-                    <Link href="/" className="flex items-center gap-2 mr-auto ml-4">
-                        <div className="rounded-md bg-zinc-800 p-1">
-                            <Rocket className="h-6 w-6 text-zinc-100" />
-                        </div>
-                        <span className="text-xl font-bold">Titanium Ignis</span>
-                    </Link>
-                </div>
-            </header>
+            <Navbar pathname={pathname} router={router}/>
 
             <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32">
                 <div className="max-w-3xl w-full mx-auto text-center">

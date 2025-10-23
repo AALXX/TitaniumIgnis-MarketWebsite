@@ -2,7 +2,6 @@ import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import Meta from '@/Meta/Meta'
 import type React from 'react' // Added import for React
-import Navbar from '@/features/navbar/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 export default function RootLayout({

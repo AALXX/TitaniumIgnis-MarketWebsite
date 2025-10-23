@@ -1,444 +1,427 @@
 'use client'
-
-import type React from 'react'
-
+import { CheckCircle, Rocket, Users, Clock, Code, BarChart3, Shield, Zap, ArrowRight } from 'lucide-react'
+import userAccountImg from '@/assets/user-account.png'
+import { Button } from '@/components/Button'
+import { Navbar } from '@/features/navbar/Navbar'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Clock, Code, Users, Rocket } from 'lucide-react'
 import Image from 'next/image'
 
-import { Button } from '@/components/Button'
-import { useRouter } from 'next/navigation'
-import Navbar from '@/features/navbar/Navbar'
-
-export default function Home() {
-    const router = useRouter()
+const Index = () => {
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
 
     return (
-        <div className="flex  flex-col bg-zinc-950 text-zinc-100  w-full ">
-            <Navbar />
+        <div className="min-h-screen bg-background text-foreground">
+            <Navbar pathname="/" />
 
-            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="home">
-                <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-                    <div className="flex flex-col justify-center space-y-4">
-                        <div className="inline-block rounded-lg bg-zinc-800 px-3 py-1 text-sm">Streamline Your Projects</div>
-                        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                            Project Management <span className="text-zinc-400">Simplified</span>
-                        </h1>
-                        <p className="max-w-[600px] text-zinc-400 text-base md:text-lg lg:text-xl">
-                            Effortlessly launch, track, and deploy projects with our all-in-one platform. Designed for modern teams who value efficiency and collaboration.
-                        </p>
-                        <div className="flex flex-col gap-3 sm:flex-row">
-                            <Button onClick={() => router.push('/platform-contact')}>Start Free Trial</Button>
-                            <Button variant="outline" className="border-zinc-800 text-zinc-100 hover:bg-zinc-800" onClick={() => router.push('/platform-contact')}>
-                                Book a Demo
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="relative flex items-center justify-center mt-8 md:mt-0">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl ">
-                            <Image src="/UserAccount.png" alt="Deployment Monitoring" fill className="object-contain rounded-xl" />
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <section id="home" className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+                <div className="absolute inset-0 gradient-hero opacity-50" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
-            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="features">
-                <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Powerful Features</h2>
-                    <p className="max-w-[85%] text-zinc-400 md:text-xl">Everything you need to manage projects from start to finish</p>
-                </div>
-                <div className="mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:gap-12 mt-12 sm:mt-16">
-                    <div className="flex flex-col items-start gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="rounded-full bg-zinc-800 p-2">
-                            <Rocket className="h-6 w-6" />
-                        </div>
-                        <h3 className="text-xl font-bold">Easy Project Launching</h3>
-                        <p className="text-zinc-400">Get your projects up and running in minutes with intuitive setup and templates.</p>
-                    </div>
-                    <div className="flex flex-col items-start gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="rounded-full bg-zinc-800 p-2">
-                            <CheckCircle className="h-6 w-6" />
-                        </div>
-                        <h3 className="text-xl font-bold">Task & Milestone Tracking</h3>
-                        <p className="text-zinc-400">Keep track of all tasks and important milestones with visual progress indicators.</p>
-                    </div>
-                    <div className="flex flex-col items-start gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="rounded-full bg-zinc-800 p-2">
-                            <Users className="h-6 w-6" />
-                        </div>
-                        <h3 className="text-xl font-bold">Team Collaboration</h3>
-                        <p className="text-zinc-400">Seamless communication and collaboration tools to keep your team aligned.</p>
-                    </div>
-                    <div className="flex flex-col items-start gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="rounded-full bg-zinc-800 p-2">
-                            <Users className="h-6 w-6" />
-                        </div>
-                        <h3 className="text-xl font-bold">Team Management</h3>
-                        <p className="text-zinc-400">Organize team members into divisions and manage permissions with ease.</p>
-                    </div>
-                    <div className="flex flex-col items-start gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="rounded-full bg-zinc-800 p-2">
-                            <Clock className="h-6 w-6" />
-                        </div>
-                        <h3 className="text-xl font-bold">Deadline Management</h3>
-                        <p className="text-zinc-400">Never miss a deadline with automated reminders and timeline visualization.</p>
-                    </div>
-                    <div className="flex flex-col items-start gap-4 rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="rounded-full bg-zinc-800 p-2">
-                            <Code className="h-6 w-6" />
-                        </div>
-                        <h3 className="text-xl font-bold">Project Deployment</h3>
-                        <p className="text-zinc-400">Deploy your projects directly from the platform with monitoring and analytics.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="how-it-works">
-                <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-                    <div className="flex flex-col justify-center space-y-4">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Comprehensive Dashboard</h2>
-                        <p className="text-zinc-400 md:text-xl">Get a complete overview of your projects with our intuitive dashboard. Track tasks, monitor deployments, and manage your team all in one place.</p>
-                        <ul className="space-y-2">
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Real-time project statistics</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Task progress visualization</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Team activity monitoring</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Deployment tracking</span>
-                            </li>
-                        </ul>
-                        <div>
-                            <Button className="mt-4">
-                                Explore Dashboard <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="relative flex items-center justify-center ">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl ">
-                            <Image src="/Dashboard.png" alt="Deployment Monitoring" fill className="object-contain rounded-xl" />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
-                <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-                    <div className="order-2 md:order-1 relative flex items-center justify-center ">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl ">
-                            <Image src="/TeamManagement.png" alt="Team Management" fill className="object-contain rounded-xl" />
-                        </div>
-                    </div>
-                    <div className="order-1 md:order-2 flex flex-col justify-center space-y-4">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Effortless Team Management</h2>
-                        <p className="text-zinc-400 md:text-xl">Organize your team into divisions, assign roles, and manage permissions with our intuitive team management system.</p>
-                        <ul className="space-y-2">
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Create custom team divisions</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Assign roles and permissions</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Track member contributions</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Streamline onboarding process</span>
-                            </li>
-                        </ul>
-                        <div>
-                            <Button className="mt-4">
-                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
-                <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-                    <div className="flex flex-col justify-center space-y-4">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Seamless Deployment</h2>
-                        <p className="text-zinc-400 md:text-xl">Deploy your projects directly from our platform. Monitor performance, track requests, and analyze metrics in real-time.</p>
-                        <ul className="space-y-2">
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>One-click deployments</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Real-time performance monitoring</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Request analytics</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Integrated code editor</span>
-                            </li>
-                        </ul>
-                        <div>
-                            <Button className="mt-4">
-                                See Deployment Features <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="relative flex items-center justify-center ">
-                        <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full max-w-6xl overflow-hidden rounded-xl">
-                            <Image src="/Monitoring.png" alt="Deployment Monitoring" fill className="object-contain rounded-xl" />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center" id="pricing">
-                <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Simple, Transparent Pricing</h2>
-                    <p className="max-w-[85%] text-zinc-400 md:text-xl">Choose the plan that's right for your team</p>
-                </div>
-                <div className="mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3 md:gap-8 lg:gap-12 mt-12 sm:mt-16">
-                    <div className="flex flex-col rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="mb-4">
-                            <h3 className="text-xl font-bold">Starter</h3>
-                            <p className="text-zinc-400 mt-2">Perfect for small teams just getting started</p>
-                            <div className="mt-4">
-                                <span className="text-4xl font-bold">$29</span>
-                                <span className="text-zinc-400">/month</span>
+                <div className="container mx-auto relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-8 animate-fade-in">
+                            <div className="inline-block">
+                                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 border border-border/50 text-sm font-medium backdrop-blur-sm">
+                                    <Zap className="h-4 w-4 text-primary" />
+                                    Streamline Your Projects
+                                </span>
                             </div>
-                        </div>
-                        <ul className="space-y-2 mb-8">
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Up to 5 team members</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>3 active projects</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>3 active deployments</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Task tracking</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Team collaboration</span>
-                            </li>
-                        </ul>
-                        <Button className="mt-auto" onClick={() => router.push('/platform-contact')}>
-                            Get Started
-                        </Button>
-                    </div>
-                    <div className="flex flex-col rounded-lg border border-zinc-800 bg-zinc-900 p-6 relative">
-                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-zinc-100 text-zinc-950 px-3 py-1 rounded-full text-sm font-medium">Most Popular</div>
-                        <div className="mb-4">
-                            <h3 className="text-xl font-bold">Professional</h3>
-                            <p className="text-zinc-400 mt-2">For growing teams with more complex needs</p>
-                            <div className="mt-4">
-                                <span className="text-4xl font-bold">$175</span>
-                                <span className="text-zinc-400">/month</span>
-                            </div>
-                        </div>
-                        <ul className="space-y-2 mb-8">
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Up to 15 team members</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>10 active projects</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Advanced task tracking</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Team collaboration</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Deployment features</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Basic analytics</span>
-                            </li>
-                        </ul>
-                        <Button className="mt-auto" onClick={() => router.push('/platform-contact')}>
-                            Get Started
-                        </Button>
-                    </div>
-                    <div className="flex flex-col rounded-lg border border-zinc-800 bg-zinc-900 p-6">
-                        <div className="mb-4">
-                            <h3 className="text-xl font-bold">Enterprise</h3>
-                            <p className="text-zinc-400 mt-2">For large teams and organizations</p>
-                            <div className="mt-4">
-                                <span className="text-4xl font-bold">$199</span>
-                                <span className="text-zinc-400">/month</span>
-                            </div>
-                        </div>
-                        <ul className="space-y-2 mb-8">
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Unlimited team members</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Unlimited projects</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Advanced task tracking</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Team collaboration</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Advanced deployment features</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Advanced analytics</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <CheckCircle className="h-5 w-5 text-zinc-400" />
-                                <span>Priority support</span>
-                            </li>
-                        </ul>
-                        <Button className="mt-auto" onClick={() => router.push('/platform-contact')}>
-                            Contact Sales
-                        </Button>
-                    </div>
-                </div>
-            </section>
 
-            <section className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
-                <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to streamline your projects?</h2>
-                    <p className="max-w-[85%] text-zinc-400 md:text-xl">Join thousands of teams already using Titanium Ignis to manage their projects more efficiently.</p>
-                    <div className="flex flex-col gap-3 sm:flex-row mt-6">
-                        <Button onClick={() => router.push('/platform-contact')}>Start Free Trial</Button>
-                        <Button variant="outline" className="border-zinc-800 text-zinc-100 hover:bg-zinc-800" onClick={() => router.push('/platform-contact')}>
-                            Book a Demo
-                        </Button>
-                    </div>
-                </div>
-            </section>
+                            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
+                                Project Management <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Simplified</span>
+                            </h1>
 
-            <footer className="border-t border-zinc-800 bg-zinc-950 w-full">
-                <div className="px-4 py-12 sm:px-6 md:px-12 lg:px-24 xl:px-32 w-full self-center">
-                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-                        <div className="col-span-2 lg:col-span-2">
-                            <div className="flex items-center gap-2">
-                                <div className="rounded-md bg-zinc-800 p-1">
-                                    <Rocket className="h-6 w-6 text-zinc-100" />
+                            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                                Effortlessly launch, track, and deploy projects with our all-in-one platform. Designed for modern teams who value efficiency and collaboration.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                <Link href="/platform-contact">
+                                    <Button size="lg" variant="hero" className="group">
+                                        Start Free Trial
+                                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                </Link>
+
+                                <Link href="/platform-contact">
+                                    <Button size="lg" variant="outline">
+                                        Book a Demo
+                                    </Button>
+                                </Link>
+                            </div>
+
+                            <div className="flex items-center gap-8 pt-8">
+                                <div>
+                                    <div className="text-3xl font-bold text-foreground">4+</div>
+                                    <div className="text-sm text-muted-foreground">Project Modules</div>
                                 </div>
+                                <div className="h-12 w-px bg-border" />
+                                <div>
+                                    <div className="text-3xl font-bold text-foreground">99.9%</div>
+                                    <div className="text-sm text-muted-foreground">Uptime</div>
+                                </div>
+                                <div className="h-12 w-px bg-border" />
+                                <div>
+                                    <div className="text-3xl font-bold text-foreground">24/7</div>
+                                    <div className="text-sm text-muted-foreground">Support</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="relative animate-slide-in-right">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                                <img src={'/UserAccount.png'} alt="User Dashboard" className="w-full h-auto" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                            </div>
+                            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float" />
+                            <div className="absolute -top-4 -left-4 w-32 h-32 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Features Section */}
+            <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/5 to-transparent" />
+
+                <div className="container mx-auto relative z-10">
+                    <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Powerful Features</h2>
+                        <p className="text-xl text-muted-foreground">Everything you need to manage projects from start to finish</p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            {
+                                icon: Rocket,
+                                title: 'Easy Project Launching',
+                                description: 'Get your projects up and running in minutes with intuitive setup and templates.'
+                            },
+                            {
+                                icon: CheckCircle,
+                                title: 'Task & Milestone Tracking',
+                                description: 'Keep track of all tasks and important milestones with visual progress indicators.'
+                            },
+                            {
+                                icon: Users,
+                                title: 'Team Collaboration',
+                                description: 'Seamless communication and collaboration tools to keep your team aligned.'
+                            },
+                            {
+                                icon: Shield,
+                                title: 'Team Management',
+                                description: 'Organize team members into divisions and manage permissions with ease.'
+                            },
+                            {
+                                icon: Clock,
+                                title: 'Deadline Management',
+                                description: 'Never miss a deadline with automated reminders and timeline visualization.'
+                            },
+                            {
+                                icon: Code,
+                                title: 'Project Deployment',
+                                description: 'Deploy your projects directly from the platform with monitoring and analytics.'
+                            }
+                        ].map((feature, index) => (
+                            <div key={index} className="group glass-card p-8 rounded-2xl hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+                                <div className="inline-flex items-center justify-center p-3 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 mb-6 group-hover:scale-110 transition-transform">
+                                    <feature.icon className="h-6 w-6 text-primary" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works" className="py-24 px-4 sm:px-6 lg:px-8">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="space-y-6">
+                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Comprehensive Dashboard</h2>
+                            <p className="text-xl text-muted-foreground leading-relaxed">
+                                Get a complete overview of your projects with our intuitive dashboard. Track tasks, monitor deployments, and manage your team all in one place.
+                            </p>
+
+                            <ul className="space-y-4">
+                                {['Real-time project statistics', 'Task progress visualization', 'Team activity monitoring', 'Deployment tracking'].map((item, index) => (
+                                    <li key={index} className="flex items-center gap-3">
+                                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                            <CheckCircle className="h-4 w-4 text-primary" />
+                                        </div>
+                                        <span className="text-foreground">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="pt-4">
+                                <Link href="/platform-contact">
+                                    <Button variant="default" className="group">
+                                        Explore Dashboard
+                                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className="relative">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                                <img src={'/Dashboard.png'} alt="Project Dashboard" className="w-full h-auto" />
+                            </div>
+                            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="relative order-2 lg:order-1">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                                <img src={'/TeamManagement.png'} alt="Team Management" className="w-full h-auto" />
+                            </div>
+                            <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+                        </div>
+
+                        <div className="space-y-6 order-1 lg:order-2">
+                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Effortless Team Management</h2>
+                            <p className="text-xl text-muted-foreground leading-relaxed">Organize your team into divisions, assign roles, and manage permissions with our intuitive team management system.</p>
+
+                            <ul className="space-y-4">
+                                {['Create custom team divisions', 'Assign roles and permissions', 'Track member contributions', 'Streamline onboarding process'].map((item, index) => (
+                                    <li key={index} className="flex items-center gap-3">
+                                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center">
+                                            <CheckCircle className="h-4 w-4 text-secondary" />
+                                        </div>
+                                        <span className="text-foreground">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="pt-4">
+                                <Link href="/platform-contact">
+                                    <Button variant="secondary" className="group">
+                                        Learn More
+                                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-24 px-4 sm:px-6 lg:px-8">
+                <div className="container mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="space-y-6">
+                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Seamless Deployment</h2>
+                            <p className="text-xl text-muted-foreground leading-relaxed">Deploy your projects directly from our platform. Monitor performance, track requests, and analyze metrics in real-time.</p>
+
+                            <ul className="space-y-4">
+                                {['One-click deployments', 'Real-time performance monitoring', 'Request analytics', 'Integrated code editor'].map((item, index) => (
+                                    <li key={index} className="flex items-center gap-3">
+                                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                            <CheckCircle className="h-4 w-4 text-primary" />
+                                        </div>
+                                        <span className="text-foreground">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div className="pt-4">
+                                <Link href="/platform-contact">
+                                    <Button variant="default" className="group">
+                                        See Deployment Features
+                                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className="relative">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                                <img src={'/Monitoring.png'} alt="Deployment Monitoring" className="w-full h-auto" />
+                            </div>
+                            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
+                <div className="container mx-auto">
+                    <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Simple, Transparent Pricing</h2>
+                        <p className="text-xl text-muted-foreground">Choose the plan that's right for your team</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        {[
+                            {
+                                name: 'Starter',
+                                price: '$29',
+                                description: 'Perfect for small teams just getting started',
+                                features: ['Up to 5 team members', '3 active projects', '3 active deployments', 'Task tracking', 'Team collaboration'],
+                                popular: false
+                            },
+                            {
+                                name: 'Professional',
+                                price: '$175',
+                                description: 'For growing teams with more complex needs',
+                                features: ['Up to 15 team members', '10 active projects', 'Advanced task tracking', 'Team collaboration', 'Deployment features', 'Basic analytics'],
+                                popular: true
+                            },
+                            {
+                                name: 'Enterprise',
+                                price: '$199',
+                                description: 'For large teams and organizations',
+                                features: ['Unlimited team members', 'Unlimited projects', 'Advanced task tracking', 'Team collaboration', 'Advanced deployment features', 'Advanced analytics', 'Priority support'],
+                                popular: false
+                            }
+                        ].map((plan, index) => (
+                            <div key={index} className={`relative glass-card p-8 rounded-2xl ${plan.popular ? 'ring-2 ring-primary shadow-xl shadow-primary/10' : ''}`}>
+                                {plan.popular && (
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-primary to-secondary text-foreground text-sm font-medium rounded-full">Most Popular</div>
+                                )}
+
+                                <div className="space-y-4 mb-8">
+                                    <h3 className="text-2xl font-bold">{plan.name}</h3>
+                                    <p className="text-muted-foreground">{plan.description}</p>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-5xl font-bold">{plan.price}</span>
+                                        <span className="text-muted-foreground">/month</span>
+                                    </div>
+                                </div>
+
+                                <ul className="space-y-3 mb-8">
+                                    {plan.features.map((feature, fIndex) => (
+                                        <li key={fIndex} className="flex items-center gap-3">
+                                            <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                                            <span className="text-sm">{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <Link href="/platform-contact">
+
+                                <Button variant={plan.popular ? 'default' : 'outline'} className="w-full">
+                                    Get Started
+                                </Button>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-24 px-4 sm:px-6 lg:px-8">
+                <div className="container mx-auto">
+                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 p-12 md:p-16 text-center border border-border/50">
+                        <div className="relative z-10 max-w-3xl mx-auto space-y-6">
+                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Ready to streamline your projects?</h2>
+                            <p className="text-xl text-muted-foreground">Join thousands of teams already using Titanium Ignis to manage their projects more efficiently.</p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                                <Link href="/platform-contact">
+
+                                <Button size="lg" variant="hero" className="group">
+                                    Start Free Trial
+                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Button>
+                                </Link>
+                                <Link href="/platform-contact">
+
+                                <Button size="lg" variant="outline">
+                                    Book a Demo
+                                </Button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float" />
+                        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    </div>
+                </div>
+            </section>
+
+            <footer className="border-t border-border/50 bg-muted/20">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                        <div className="col-span-2">
+                            <div className="flex items-center gap-2 mb-4">
+                                <Image src="/fire.png" alt="Titanium Ignis Logo" width={32} height={32} />
                                 <span className="text-xl font-bold">Titanium Ignis</span>
                             </div>
-                            <p className="mt-4 text-zinc-400">Streamline your project management with our all-in-one platform. Launch, track, and deploy projects with ease.</p>
+                            <p className="text-muted-foreground max-w-sm">Streamline your project management with our all-in-one platform. Launch, track, and deploy projects with ease.</p>
                         </div>
+
                         <div>
-                            <h3 className="mb-4 text-sm font-semibold">Product</h3>
-                            <ul className="space-y-2 text-sm text-zinc-400">
+                            <h3 className="font-semibold mb-4">Product</h3>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
+                                    <button onClick={() => scrollToSection('features')} className="hover:text-foreground transition-colors">
                                         Features
-                                    </Link>
+                                    </button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
+                                    <button onClick={() => scrollToSection('pricing')} className="hover:text-foreground transition-colors">
                                         Pricing
-                                    </Link>
+                                    </button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Integrations
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Integrations</button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Changelog
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Changelog</button>
                                 </li>
                             </ul>
                         </div>
+
                         <div>
-                            <h3 className="mb-4 text-sm font-semibold">Resources</h3>
-                            <ul className="space-y-2 text-sm text-zinc-400">
+                            <h3 className="font-semibold mb-4">Resources</h3>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Documentation
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Documentation</button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Guides
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Guides</button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Support
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Support</button>
                                 </li>
                             </ul>
                         </div>
+
                         <div>
-                            <h3 className="mb-4 text-sm font-semibold">Company</h3>
-                            <ul className="space-y-2 text-sm text-zinc-400">
+                            <h3 className="font-semibold mb-4">Company</h3>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        About
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">About</button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Blog
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Blog</button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Careers
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Careers</button>
                                 </li>
                                 <li>
-                                    <Link href="#" className="hover:text-zinc-100">
-                                        Contact
-                                    </Link>
+                                    <button className="hover:text-foreground transition-colors">Contact</button>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div className="mt-12 border-t border-zinc-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
-                        <p className="text-sm text-zinc-400">© 2025 Titanium Ignis. All rights reserved.</p>
-                        <div className="flex gap-4 mt-4 md:mt-0">
-                            <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-100">
-                                Terms
-                            </Link>
-                            <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-100">
-                                Privacy
-                            </Link>
-                            <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-100">
-                                Cookies
-                            </Link>
+
+                    <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <p className="text-sm text-muted-foreground">© 2025 Titanium Ignis. All rights reserved.</p>
+                        <div className="flex gap-6 text-sm text-muted-foreground">
+                            <button className="hover:text-foreground transition-colors">Terms</button>
+                            <button className="hover:text-foreground transition-colors">Privacy</button>
+                            <button className="hover:text-foreground transition-colors">Cookies</button>
                         </div>
                     </div>
                 </div>
@@ -446,3 +429,5 @@ export default function Home() {
         </div>
     )
 }
+
+export default Index
