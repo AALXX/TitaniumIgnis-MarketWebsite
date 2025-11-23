@@ -103,7 +103,6 @@ export const Navbar = ({ router, pathname }: NavbarProps) => {
                         </button>
                         <div className="px-4 space-y-2">
                             <Link href="/platform-contact">
-                                z{' '}
                                 <Button variant="outline" className="w-full">
                                     Sign In
                                 </Button>
