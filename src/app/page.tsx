@@ -1,17 +1,30 @@
 'use client'
-import { CheckCircle, Rocket, Users, Clock, Code, BarChart3, Shield, Zap, ArrowRight } from 'lucide-react'
+import { CheckCircle, Rocket, Users, Clock, Code, BarChart3, Shield, Zap, ArrowRight, X } from 'lucide-react'
 import userAccountImg from '@/assets/user-account.png'
 import { Button } from '@/components/Button'
 import { Navbar } from '@/features/navbar/Navbar'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const Index = () => {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id)
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' })
         }
+    }
+
+    const openImage = (src: string) => {
+        setSelectedImage(src)
+        document.body.style.overflow = 'hidden'
+    }
+
+    const closeImage = () => {
+        setSelectedImage(null)
+        document.body.style.overflow = 'unset'
     }
 
     return (
@@ -74,8 +87,11 @@ const Index = () => {
                         </div>
 
                         <div className="relative animate-slide-in-right w-full">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
-                                <img src={'/UserAccount.png'} alt="User Dashboard" className="w-full h-auto" />
+                            <div
+                                className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.98] touch-manipulation"
+                                onClick={() => openImage('/UserAccount.png')}
+                            >
+                                <img src={'/UserAccount.png'} alt="User Dashboard" className="w-full h-auto select-none" draggable={false} />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                             </div>
                             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float" />
@@ -171,8 +187,11 @@ const Index = () => {
                         </div>
 
                         <div className="relative w-full">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
-                                <img src={'/Dashboard.png'} alt="Project Dashboard" className="w-full h-auto" />
+                            <div
+                                className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.98] touch-manipulation"
+                                onClick={() => openImage('/Dashboard.png')}
+                            >
+                                <img src={'/Dashboard.png'} alt="Project Dashboard" className="w-full h-auto select-none" draggable={false} />
                             </div>
                             <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
                         </div>
@@ -184,8 +203,11 @@ const Index = () => {
                 <div className="container mx-auto max-w-full">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="relative order-2 lg:order-1 w-full">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
-                                <img src={'/TeamManagement.png'} alt="Team Management" className="w-full h-auto" />
+                            <div
+                                className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.98] touch-manipulation"
+                                onClick={() => openImage('/TeamManagement.png')}
+                            >
+                                <img src={'/TeamManagement.png'} alt="Team Management" className="w-full h-auto select-none" draggable={false} />
                             </div>
                             <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
                         </div>
@@ -249,8 +271,11 @@ const Index = () => {
                         </div>
 
                         <div className="relative w-full">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
-                                <img src={'/Monitoring.png'} alt="Deployment Monitoring" className="w-full h-auto" />
+                            <div
+                                className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.98] touch-manipulation"
+                                onClick={() => openImage('/Monitoring.png')}
+                            >
+                                <img src={'/Monitoring.png'} alt="Deployment Monitoring" className="w-full h-auto select-none" draggable={false} />
                             </div>
                             <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
                         </div>
@@ -430,6 +455,26 @@ const Index = () => {
                     </div>
                 </div>
             </footer>
+
+            {/* Image Modal */}
+            {selectedImage && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/90 backdrop-blur-sm animate-fade-in touch-none" onClick={closeImage}>
+                    <button
+                        className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors z-10 touch-manipulation"
+                        onClick={closeImage}
+                        aria-label="Close image"
+                    >
+                        <X className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    </button>
+
+                    <div className="relative max-w-7xl max-h-[90vh] w-full animate-scale-in" onClick={e => e.stopPropagation()}>
+                        <img src={selectedImage} alt="Enlarged view" className="w-full h-full object-contain rounded-lg select-none" draggable={false} />
+                    </div>
+
+                    {/* Mobile tap hint */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm sm:hidden animate-fade-in">Tap outside to close</div>
+                </div>
+            )}
         </div>
     )
 }
