@@ -15,14 +15,14 @@ const Index = () => {
     }
 
     return (
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
             <Navbar pathname="/" />
 
             <section id="home" className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
                 <div className="absolute inset-0 gradient-hero opacity-50" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
-                <div className="container mx-auto relative z-10">
+                <div className="container mx-auto relative z-10 max-w-full">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-8 animate-fade-in">
                             <div className="inline-block">
@@ -32,49 +32,49 @@ const Index = () => {
                                 </span>
                             </div>
 
-                            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
+                            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight break-words">
                                 Project Management <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Simplified</span>
                             </h1>
 
-                            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                                 Effortlessly launch, track, and deploy projects with our all-in-one platform. Designed for modern teams who value efficiency and collaboration.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 pt-4">
                                 <Link href="/platform-contact">
-                                    <Button size="lg" variant="hero" className="group">
+                                    <Button size="lg" variant="hero" className="group w-full sm:w-auto">
                                         Start Free Trial
                                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                     </Button>
                                 </Link>
 
                                 <Link href="/platform-contact">
-                                    <Button size="lg" variant="outline">
+                                    <Button size="lg" variant="outline" className="w-full sm:w-auto">
                                         Book a Demo
                                     </Button>
                                 </Link>
                             </div>
 
-                            <div className="flex items-center gap-8 pt-8">
+                            <div className="flex items-center gap-4 sm:gap-8 pt-8 flex-wrap">
                                 <div>
-                                    <div className="text-3xl font-bold text-foreground">4+</div>
-                                    <div className="text-sm text-muted-foreground">Project Modules</div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-foreground">4+</div>
+                                    <div className="text-xs sm:text-sm text-muted-foreground">Project Modules</div>
                                 </div>
                                 <div className="h-12 w-px bg-border" />
                                 <div>
-                                    <div className="text-3xl font-bold text-foreground">99.9%</div>
-                                    <div className="text-sm text-muted-foreground">Uptime</div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-foreground">99.9%</div>
+                                    <div className="text-xs sm:text-sm text-muted-foreground">Uptime</div>
                                 </div>
                                 <div className="h-12 w-px bg-border" />
                                 <div>
-                                    <div className="text-3xl font-bold text-foreground">24/7</div>
-                                    <div className="text-sm text-muted-foreground">Support</div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-foreground">24/7</div>
+                                    <div className="text-xs sm:text-sm text-muted-foreground">Support</div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="relative animate-slide-in-right">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                        <div className="relative animate-slide-in-right w-full">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
                                 <img src={'/UserAccount.png'} alt="User Dashboard" className="w-full h-auto" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                             </div>
@@ -89,10 +89,10 @@ const Index = () => {
             <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/5 to-transparent" />
 
-                <div className="container mx-auto relative z-10">
+                <div className="container mx-auto relative z-10 max-w-full">
                     <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Powerful Features</h2>
-                        <p className="text-xl text-muted-foreground">Everything you need to manage projects from start to finish</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Powerful Features</h2>
+                        <p className="text-lg sm:text-xl text-muted-foreground">Everything you need to manage projects from start to finish</p>
                     </div>
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -141,11 +141,11 @@ const Index = () => {
             </section>
 
             <section id="how-it-works" className="py-24 px-4 sm:px-6 lg:px-8">
-                <div className="container mx-auto">
+                <div className="container mx-auto max-w-full">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Comprehensive Dashboard</h2>
-                            <p className="text-xl text-muted-foreground leading-relaxed">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Comprehensive Dashboard</h2>
+                            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
                                 Get a complete overview of your projects with our intuitive dashboard. Track tasks, monitor deployments, and manage your team all in one place.
                             </p>
 
@@ -162,7 +162,7 @@ const Index = () => {
 
                             <div className="pt-4">
                                 <Link href="/platform-contact">
-                                    <Button variant="default" className="group">
+                                    <Button variant="default" className="group w-full sm:w-auto">
                                         Explore Dashboard
                                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                     </Button>
@@ -170,35 +170,35 @@ const Index = () => {
                             </div>
                         </div>
 
-                        <div className="relative">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                        <div className="relative w-full">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
                                 <img src={'/Dashboard.png'} alt="Project Dashboard" className="w-full h-auto" />
                             </div>
-                            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+                            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
                         </div>
                     </div>
                 </div>
             </section>
 
             <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
-                <div className="container mx-auto">
+                <div className="container mx-auto max-w-full">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div className="relative order-2 lg:order-1">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                        <div className="relative order-2 lg:order-1 w-full">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
                                 <img src={'/TeamManagement.png'} alt="Team Management" className="w-full h-auto" />
                             </div>
-                            <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+                            <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
                         </div>
 
                         <div className="space-y-6 order-1 lg:order-2">
-                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Effortless Team Management</h2>
-                            <p className="text-xl text-muted-foreground leading-relaxed">Organize your team into divisions, assign roles, and manage permissions with our intuitive team management system.</p>
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Effortless Team Management</h2>
+                            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">Organize your team into divisions, assign roles, and manage permissions with our intuitive team management system.</p>
 
                             <ul className="space-y-4">
                                 {['Create custom team divisions', 'Assign roles and permissions', 'Track member contributions', 'Streamline onboarding process'].map((item, index) => (
                                     <li key={index} className="flex items-center gap-3">
                                         <div className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center">
-                                            <CheckCircle className="h-4 w-4 text-secondary" />
+                                            <CheckCircle className="h-5 w-5 text-secondary" />
                                         </div>
                                         <span className="text-foreground">{item}</span>
                                     </li>
@@ -207,7 +207,7 @@ const Index = () => {
 
                             <div className="pt-4">
                                 <Link href="/platform-contact">
-                                    <Button variant="secondary" className="group">
+                                    <Button variant="secondary" className="group w-full sm:w-auto">
                                         Learn More
                                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                     </Button>
@@ -219,11 +219,13 @@ const Index = () => {
             </section>
 
             <section className="py-24 px-4 sm:px-6 lg:px-8">
-                <div className="container mx-auto">
+                <div className="container mx-auto max-w-full">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-6">
-                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Seamless Deployment</h2>
-                            <p className="text-xl text-muted-foreground leading-relaxed">Deploy your projects directly from our platform. Monitor performance, track requests, and analyze metrics in real-time.</p>
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Seamless Deployment</h2>
+                            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+                                Deploy your projects directly from our platform. Monitor performance, track requests, and analyze metrics in real-time.
+                            </p>
 
                             <ul className="space-y-4">
                                 {['One-click deployments', 'Real-time performance monitoring', 'Request analytics', 'Integrated code editor'].map((item, index) => (
@@ -238,7 +240,7 @@ const Index = () => {
 
                             <div className="pt-4">
                                 <Link href="/platform-contact">
-                                    <Button variant="default" className="group">
+                                    <Button variant="default" className="group w-full sm:w-auto">
                                         See Deployment Features
                                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                     </Button>
@@ -246,57 +248,59 @@ const Index = () => {
                             </div>
                         </div>
 
-                        <div className="relative">
-                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl">
+                        <div className="relative w-full">
+                            <div className="relative rounded-2xl overflow-hidden border border-border/50 shadow-2xl max-w-full">
                                 <img src={'/Monitoring.png'} alt="Deployment Monitoring" className="w-full h-auto" />
                             </div>
-                            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+                            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
-                <div className="container mx-auto">
+                <div className="container mx-auto max-w-full">
                     <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Simple, Transparent Pricing</h2>
-                        <p className="text-xl text-muted-foreground">Choose the plan that's right for your team</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Simple, Transparent Pricing</h2>
+                        <p className="text-lg sm:text-xl text-muted-foreground">Choose the plan that's right for your team</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                         {[
                             {
                                 name: 'Starter',
-                                price: '$29',
+                                price: '€29',
                                 description: 'Perfect for small teams just getting started',
                                 features: ['Up to 5 team members', '3 active projects', '3 active deployments', 'Task tracking', 'Team collaboration'],
                                 popular: false
                             },
                             {
                                 name: 'Professional',
-                                price: '$175',
+                                price: '€175',
                                 description: 'For growing teams with more complex needs',
                                 features: ['Up to 15 team members', '10 active projects', 'Advanced task tracking', 'Team collaboration', 'Deployment features', 'Basic analytics'],
                                 popular: true
                             },
                             {
                                 name: 'Enterprise',
-                                price: '$199',
+                                price: '€199',
                                 description: 'For large teams and organizations',
                                 features: ['Unlimited team members', 'Unlimited projects', 'Advanced task tracking', 'Team collaboration', 'Advanced deployment features', 'Advanced analytics', 'Priority support'],
                                 popular: false
                             }
                         ].map((plan, index) => (
-                            <div key={index} className={`relative glass-card p-8 rounded-2xl ${plan.popular ? 'ring-2 ring-primary shadow-xl shadow-primary/10' : ''}`}>
+                            <div key={index} className={`relative glass-card p-8 rounded-2xl €{plan.popular ? 'ring-2 ring-primary shadow-xl shadow-primary/10' : ''}`}>
                                 {plan.popular && (
-                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-primary to-secondary text-foreground text-sm font-medium rounded-full">Most Popular</div>
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-primary to-secondary text-foreground text-sm font-medium rounded-full whitespace-nowrap">
+                                        Most Popular
+                                    </div>
                                 )}
 
                                 <div className="space-y-4 mb-8">
                                     <h3 className="text-2xl font-bold">{plan.name}</h3>
                                     <p className="text-muted-foreground">{plan.description}</p>
                                     <div className="flex items-baseline gap-2">
-                                        <span className="text-5xl font-bold">{plan.price}</span>
+                                        <span className="text-4xl sm:text-5xl font-bold">{plan.price}</span>
                                         <span className="text-muted-foreground">/month</span>
                                     </div>
                                 </div>
@@ -310,10 +314,9 @@ const Index = () => {
                                     ))}
                                 </ul>
                                 <Link href="/platform-contact">
-
-                                <Button variant={plan.popular ? 'default' : 'outline'} className="w-full">
-                                    Get Started
-                                </Button>
+                                    <Button variant={plan.popular ? 'default' : 'outline'} className="w-full">
+                                        Get Started
+                                    </Button>
                                 </Link>
                             </div>
                         ))}
@@ -322,35 +325,33 @@ const Index = () => {
             </section>
 
             <section className="py-24 px-4 sm:px-6 lg:px-8">
-                <div className="container mx-auto">
-                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 p-12 md:p-16 text-center border border-border/50">
+                <div className="container mx-auto max-w-full">
+                    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10 p-8 sm:p-12 md:p-16 text-center border border-border/50">
                         <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-                            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Ready to streamline your projects?</h2>
-                            <p className="text-xl text-muted-foreground">Join thousands of teams already using Titanium Ignis to manage their projects more efficiently.</p>
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Ready to streamline your projects?</h2>
+                            <p className="text-lg sm:text-xl text-muted-foreground">Join thousands of teams already using Titanium Ignis to manage their projects more efficiently.</p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                                 <Link href="/platform-contact">
-
-                                <Button size="lg" variant="hero" className="group">
-                                    Start Free Trial
-                                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                </Button>
+                                    <Button size="lg" variant="hero" className="group w-full sm:w-auto">
+                                        Start Free Trial
+                                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                    </Button>
                                 </Link>
                                 <Link href="/platform-contact">
-
-                                <Button size="lg" variant="outline">
-                                    Book a Demo
-                                </Button>
+                                    <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                                        Book a Demo
+                                    </Button>
                                 </Link>
                             </div>
                         </div>
-                        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float" />
-                        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float pointer-events-none" />
+                        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-float pointer-events-none" style={{ animationDelay: '2s' }} />
                     </div>
                 </div>
             </section>
 
             <footer className="border-t border-border/50 bg-muted/20">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 max-w-full">
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
                         <div className="col-span-2">
                             <div className="flex items-center gap-2 mb-4">
