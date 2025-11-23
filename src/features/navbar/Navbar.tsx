@@ -103,12 +103,13 @@ export const Navbar = ({ router, pathname }: NavbarProps) => {
                         </button>
                         <div className="px-4 space-y-2">
                             <Link href="/platform-contact">
-                                <Button variant="outline" size="sm">
+                                z{' '}
+                                <Button variant="outline" className="w-full">
                                     Sign In
                                 </Button>
                             </Link>
                             <Link href="/platform-contact">
-                                <Button size="sm" variant="default" onClick={handleGetStarted}>
+                                <Button className="w-full" onClick={handleGetStarted}>
                                     Get Started
                                 </Button>
                             </Link>
