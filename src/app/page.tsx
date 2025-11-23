@@ -272,24 +272,27 @@ const Index = () => {
                                 price: '€29',
                                 description: 'Perfect for small teams just getting started',
                                 features: ['Up to 5 team members', '3 active projects', '3 active deployments', 'Task tracking', 'Team collaboration'],
-                                popular: false
+                                popular: false,
+                                showMonthly: true
                             },
                             {
                                 name: 'Professional',
                                 price: '€175',
                                 description: 'For growing teams with more complex needs',
                                 features: ['Up to 15 team members', '10 active projects', 'Advanced task tracking', 'Team collaboration', 'Deployment features', 'Basic analytics'],
-                                popular: true
+                                popular: true,
+                                showMonthly: true
                             },
                             {
                                 name: 'Enterprise',
-                                price: '€199',
+                                price: 'Contact Us',
                                 description: 'For large teams and organizations',
                                 features: ['Unlimited team members', 'Unlimited projects', 'Advanced task tracking', 'Team collaboration', 'Advanced deployment features', 'Advanced analytics', 'Priority support'],
-                                popular: false
+                                popular: false,
+                                showMonthly: false
                             }
                         ].map((plan, index) => (
-                            <div key={index} className={`relative glass-card p-8 rounded-2xl €{plan.popular ? 'ring-2 ring-primary shadow-xl shadow-primary/10' : ''}`}>
+                            <div key={index} className={`relative glass-card p-8 rounded-2xl ${plan.popular ? 'ring-2 ring-primary shadow-xl shadow-primary/10' : ''}`}>
                                 {plan.popular && (
                                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-primary to-secondary text-foreground text-sm font-medium rounded-full whitespace-nowrap">
                                         Most Popular
@@ -301,7 +304,7 @@ const Index = () => {
                                     <p className="text-muted-foreground">{plan.description}</p>
                                     <div className="flex items-baseline gap-2">
                                         <span className="text-4xl sm:text-5xl font-bold">{plan.price}</span>
-                                        <span className="text-muted-foreground">/month</span>
+                                        {plan.showMonthly && <span className="text-muted-foreground">/month</span>}
                                     </div>
                                 </div>
 
